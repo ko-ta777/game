@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ぽけぽけパック開封ゲーム</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        .pack {
+            width: 200px;
+            height: 300px;
+            background-color: #ffcc00;
+            border: 5px solid #cc9900;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            color: #fff;
+            user-select: none;
+        }
+        .card {
+            width: 150px;
+            height: 200px;
+            background-color: #fff;
+            border: 3px solid #ccc;
+            margin: 10px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #333;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>ぽけぽけパック開封ゲーム</h1>
+    <div class="pack" onclick="openPack()">
+        パックを開封
+    </div>
+    <div id="cards" class="hidden">
+        <div class="card" id="card1"></div>
+        <div class="card" id="card2"></div>
+        <div class="card" id="card3"></div>
+    </div>
+
+    <script>
+        const cards = [
+            "ピカチュウ",
+            "ヒトカゲ",
+            "ゼニガメ",
+            "フシギダネ",
+            "リザードン",
+            "カメックス",
+            "ミュウツー",
+            "ミュウ",
+            "ルギア",
+            "ホウオウ"
+        ];
+
+        function openPack() {
+            const pack = document.querySelector('.pack');
+            const cardsContainer = document.getElementById('cards');
+            const cardElements = document.querySelectorAll('.card');
+
+            pack.style.display = 'none';
+            cardsContainer.classList.remove('hidden');
+
+            cardElements.forEach(card => {
+                const randomCard = cards[Math.floor(Math.random() * cards.length)];
+                card.textContent = randomCard;
+            });
+        }
+    </script>
+</body>
+</html>
